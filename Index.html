@@ -40,8 +40,8 @@ function next(r){const s=S[cur],i=s.ivl;
  if(r==3)return{ivl:i?i*2.5:1,wait:(i?i*2.5:1)*DAY};
  return{ivl:i?i*4:3,wait:(i?i*4:3)*DAY}}
 function pick(){const now=Date.now();
- const due=Object.keys(S).filter(k=>S[k].due<=now).sort((a,b)=>S[a].due-S[b].due);
- return due.length?due[0]:null}
+ const all=Object.keys(S).sort((a,b)=>S[a].due-S[b].due);
+ return all.length?all[0]:null}
 function stats(){const now=Date.now(),v=Object.values(S);
  $('stats').textContent=v.filter(s=>s.n==0).length+' new · '+v.filter(s=>s.n>0&&s.due<=now).length+' to review'}
 function render(){stats();cur=pick();shown=false;
